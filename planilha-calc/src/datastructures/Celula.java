@@ -2,9 +2,14 @@ package datastructures;
 
 public class Celula {
 
-	private Formula formula = new Formula();
+	public Formula formula = new Formula();
 	private String celula;
 
+	public Celula(String celula) {
+		this.celula = celula;
+		this.formula.setFormula("");
+	}
+	
 	public String getCelula() {
 		return celula;
 	}

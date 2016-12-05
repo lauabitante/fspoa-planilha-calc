@@ -19,4 +19,11 @@ public class Formula {
 		return this.formula;
 	}
 	
+	public String printFormula() {
+		try {
+			return ""+ExpressionEvaluator.compute(formula);
+		} catch (InvalidExpression e) {
+			return "#ERRO#";
+		}
+	}
 }

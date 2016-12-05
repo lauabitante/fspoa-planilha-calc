@@ -13,6 +13,7 @@ public class PlanilhaDeCalculo {
 
 	private ListaEncadeada<Coluna> colunas = new ListaEncadeada<>();
 
+	// This function will return the column name from a cell name. E.g: "A1" -> "A"
 	private String getColumnName(String cell) {
 		String columnName = cell.substring(0, 1);
 		return columnName;
@@ -45,27 +46,29 @@ public class PlanilhaDeCalculo {
 
 			@Override
 			public String getValue(String cell) {
-				return cell;
+				Coluna column = getColumn(cell);
+				Celula c = column.getCelula(cell);
+				String result = "";
+				if (c.formula.getFormula().isEmpty()) {
+					result = cell;	
+				} else {
+					result = c.formula.printFormula();
+				}
+				return result;
 			}
 
 			@Override
 			public String getFormula(String cell) {
-				return cell;
+				Coluna column = getColumn(cell);
+				Celula c = column.getCelula(cell);
+				return c.formula.getFormula();
 			}
 
 			@Override
 			public void setFormula(String cell, String formula) {
-				
-				System.out.println(getColumn(cell));
-				System.out.println(colunas.toString());
-				
-				
-//				System.out.println("Celula: " + cell + " - Formula: " + formula);
-//				try {
-//					System.out.println("Valor: " + ExpressionEvaluator.compute(formula));
-//				} catch (InvalidExpression e) {
-//					System.out.println("Erro na expressão!");
-//				}
+				Coluna column = getColumn(cell);
+				Celula c = column.getCelula(cell);
+				c.formula.setFormula(formula);
 			}
 		};		
 		
