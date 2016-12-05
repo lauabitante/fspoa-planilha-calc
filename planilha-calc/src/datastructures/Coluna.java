@@ -12,9 +12,6 @@ public class Coluna {
 	public String getColuna() {
 		return coluna;
 	}
-	public void setColuna(String coluna) {
-		this.coluna = coluna;
-	}
 	
 	// Search for a cell with a given name. E.g: "A1", "K2", and so on.
 	public Celula getCelula(String cellName){
